@@ -1,6 +1,5 @@
 import socket
-from persona import Persona  # Importa el objeto Persona
-
+from persona import Persona  
 
 registrados = []
 rechazados = []
