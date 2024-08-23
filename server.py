@@ -4,6 +4,12 @@ from persona import Persona
 registrados = []
 rechazados = []
 
+def mostrar_registros():
+    print("Listado de registros:")
+    for persona in registrados:
+        print(f"Nombre: {persona.nombre}, Edad: {persona.edad}, RUT: {persona.rut}")
+
+
 def separar_informacion(datos):
     nombre, apellido, edad, rut = datos.split(";")
     return nombre, apellido, edad, rut
@@ -36,6 +42,7 @@ def validar_rut(rut):
     digito_verificador = rut[-1].lower()
     if not cuerpo.isdigit() or (digito_verificador != 'k' and not digito_verificador.isdigit()):
         return False
+    mostrar_registros()
     return calcular_digito_verificador(rut) == digito_verificador
 
 def validar_informacion(datos):
@@ -70,11 +77,10 @@ def main():
 
     while True:
         connection_socket, _ = servidor_socket.accept()
-        
+        connection_socket.settimeout(6000) 
         try:
             message = connection_socket.recv(1024).decode()
             print(f"Mensaje recibido: {message}")
-        
             modified_message = validar_informacion(message)
             print(f"Mensaje modificado: {modified_message}")
         
