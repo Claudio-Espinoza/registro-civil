@@ -15,7 +15,7 @@ def concatener_datos(nombre, apellido, edad, rut):
 def habilitar_cliente():
     client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        client_socket.connect(('localhost', 15000))
+        client_socket.connect(('gato-guina.lazos.cl', 30101))
     except socket.error as e:
         print(f"Error al conectar con el servidor: {e}")
         client_socket = None

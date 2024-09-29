@@ -61,7 +61,7 @@ def validar_informacion(datos):
 def habilitar_server():
     servidor_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
-        servidor_socket.bind(('localhost', 15000))
+        servidor_socket.bind(('gato-guina.lazos.cl', 30101))
         servidor_socket.listen()
         print("El registro civil está en servicio")
     except socket.error as e:
